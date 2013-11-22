@@ -1,0 +1,29 @@
+name: Paintball
+version: Alpha 0.1
+description: Paintball by TheMolkaPL
+author: TheMolkaPL
+prefix: Paintball
+main: pl.themolka.paintball.Paintball
+
+commands:
+    join:
+        descripton: Join the current match
+        aliases: [play]
+        usage: /join [team] - defaults to random
+    maplist:
+        description: Shows all the maps that are currently loaded including ones thatare
+        aliases: [maps|ml]
+        usage: /maplist [page]
+    myteam:
+        description: Shows you what team you are on
+        aliases: [mt]
+        usage: /myteam
+    paintball:
+        description: Paintball's Settings
+        aliases: [pb]
+        usage: /paintball <setting>
+        permission: paintball.settings
+    vote:
+        description: Vote new map
+        aliases: [v]
+        usage: /vote
