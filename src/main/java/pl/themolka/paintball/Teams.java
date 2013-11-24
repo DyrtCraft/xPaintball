@@ -214,6 +214,17 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 				}
 			}*/
 			
+			player.getInventory().clear();
+			player.getInventory().setHelmet(null);
+			player.getInventory().setChestplate(null);
+			player.getInventory().setLeggings(null);
+			player.getInventory().setBoots(null);
+			player.getInventory().setItem(0, PbPlugin.getNavigateItems().compass());
+			player.getInventory().setItem(1, PbPlugin.getNavigateItems().teamChooser());
+			if(PbPlugin.getMatch().isVote()) {
+				player.getInventory().setItem(2, PbPlugin.getNavigateItems().mapVoter());
+			}
+			
 			TagAPI.refreshPlayer(player);
 			player.setPlayerListName(ChatColor.AQUA + player.getName() + ChatColor.RESET);
 			
@@ -266,10 +277,11 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 	
 	public static void join(Player player, TeamType teamType) {
 		player.getInventory().clear();
+		player.setGameMode(GameMode.ADVENTURE);
 		
 		player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 1));
 		
-		player.getInventory().addItem();
+		player.getInventory().addItem(PbPlugin.getItems().defaultPistol());
 		
 		if(teamType == TeamType.BLUE) {
 			Wool wool = new Wool(DyeColor.BLUE);
@@ -293,6 +305,19 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 				players.showPlayer(player);
 			}
 		}*/
+	}
+	
+	public static void endGame(boolean allowVote) {
+		for(Player player : Bukkit.getOnlinePlayers()) {
+			if(player.isOnline()) {
+				player.setGameMode(GameMode.CREATIVE);
+				player.getInventory().setItem(0, PbPlugin.getNavigateItems().compass());
+				player.getInventory().setItem(1, null);
+				if(allowVote) {
+					player.getInventory().setItem(2, PbPlugin.getNavigateItems().mapVoter());
+				}
+			}
+		}
 	}
 	
 	public void check(Player player, TeamType teamType) {

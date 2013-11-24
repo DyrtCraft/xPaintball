@@ -24,7 +24,7 @@ public class MatchTask implements Runnable {
 		
 		if(isMinus()) {
 			Bukkit.getScheduler().cancelAllTasks();
-			PbPlugin.getMatch().end();
+			PbPlugin.getMatch().end(true);
 		}
 	}
 	

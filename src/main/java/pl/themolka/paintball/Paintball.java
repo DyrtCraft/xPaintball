@@ -40,7 +40,7 @@ public class Paintball extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		PbPlugin.getMatch().end();
+		PbPlugin.getMatch().end(false);
 		PbPlugin.getBungeeConnector().kickAllToHub();
 	}
 	

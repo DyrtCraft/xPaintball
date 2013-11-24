@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import pl.themolka.paintball.Paintball;
+import pl.themolka.paintball.PbPlugin;
 import pl.themolka.paintball.Teams;
 import pl.themolka.paintball.api.TeamType;
 
@@ -19,12 +20,20 @@ public class PlayerMove implements Listener {
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent e) {
 		if(Teams.getInstance().isTeam(e.getPlayer(), TeamType.OBSERVATOR)) {
-			// TODO Teleport player to spawn
+			PbPlugin.getCurrentMap().getSpawn(TeamType.OBSERVATOR);
 			return;
-		}
-		if(e.getTo().getBlockY() == -10) {
-			e.getPlayer().damage(20.0);
-			return;
+		} else {
+			if(PbPlugin.getTeams().isRunning()) {
+				if(e.getTo().getBlockY() == -10) {
+					e.getPlayer().damage(20.0);
+					return;
+				}
+			} else {
+				if(e.getTo().getBlockY() == -10) {
+					PbPlugin.getCurrentMap().getSpawn(TeamType.OBSERVATOR);
+					return;
+				}
+			}
 		}
 	}
 	

@@ -76,7 +76,7 @@ public class PaintballCommand implements CommandExecutor {
 					}
 					if(args[1].equalsIgnoreCase("end")) {
 						sender.sendMessage(ChatColor.DARK_GREEN + "Stopping the match...");
-						PbPlugin.getMatch().end();
+						PbPlugin.getMatch().end(true);
 						return true;
 					}
 				} else {

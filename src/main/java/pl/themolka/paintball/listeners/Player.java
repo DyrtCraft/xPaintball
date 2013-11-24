@@ -1,14 +1,11 @@
 package pl.themolka.paintball.listeners;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import pl.themolka.paintball.Paintball;
 import pl.themolka.paintball.PbPlugin;
@@ -64,8 +61,12 @@ public class Player implements Listener {
 			e.getPlayer().sendMessage(ChatColor.DARK_PURPLE + "The match has ended, but DON'T QUIT! " + ChatColor.DARK_GREEN + "Next map will be started in one moment!");
 		}
 		
-		e.getPlayer().getInventory().setItem(0, new ItemStack(Material.COMPASS, 1));
-		e.getPlayer().getInventory().setItem(1, teamChooser());
+		e.getPlayer().getInventory().setItem(0, PbPlugin.getNavigateItems().compass());
+		e.getPlayer().getInventory().setItem(1, PbPlugin.getNavigateItems().teamChooser());
+		
+		if(PbPlugin.getMatch().isVote()) {
+			e.getPlayer().getInventory().setItem(2, PbPlugin.getNavigateItems().mapVoter());
+		}
 	}
 	
 	@EventHandler
@@ -74,14 +75,6 @@ public class Player implements Listener {
 		
 		Teams.getBluePlayers.remove(e.getPlayer().getName());
 		Teams.getRedPlayers.remove(e.getPlayer().getName());
-	}
-	
-	private ItemStack teamChooser() {
-		ItemStack i = new ItemStack(Material.FIREWORK_CHARGE, 1);
-		ItemMeta iMeta = i.getItemMeta();
-		iMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Choose your team!");
-		i.setItemMeta(iMeta);
-		return i;
 	}
 	
 }

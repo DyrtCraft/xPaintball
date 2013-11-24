@@ -15,9 +15,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
+//import pl.themolka.paintball.PbPlugin;
 import pl.themolka.paintball.Teams;
 import pl.themolka.paintball.inventories.TeamChooserInventory;
+import pl.themolka.paintball.inventories.VoteInventory;
 
 public class Observator implements Listener {
 	
@@ -81,6 +82,11 @@ public class Observator implements Listener {
 				if(e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Choose your team!")) {
 					//if(PbPlugin.getTeams().isJoinable()) {
 						e.getPlayer().openInventory(TeamChooserInventory.inv);
+					//}
+				}
+				if(e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Vote new map!")) {
+					//if(PbPlugin.getMatch().isVote()) {
+						e.getPlayer().openInventory(VoteInventory.inv);
 					//}
 				}
 			}

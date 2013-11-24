@@ -16,6 +16,8 @@ public class Match implements pl.themolka.paintball.api.Match{
 	private int blueScore;
 	private int redScore;
 	
+	boolean vote;
+	
 	public Match(Paintball plugin) {
 		this.plugin = plugin;
 		this.teams = new Teams(plugin);
@@ -28,18 +30,39 @@ public class Match implements pl.themolka.paintball.api.Match{
 	}
 	
 	@Override
-	public void end() {
+	public void end(boolean allowVote) {
+		String winningTeam = null;
+		
+		if(win() == TeamType.BLUE) {
+			winningTeam = PbPlugin.getTeams().getTeamName(TeamType.BLUE) + ChatColor.DARK_PURPLE + "won!";
+		}
+		if(win() == TeamType.RANDOM) {
+			winningTeam = ChatColor.DARK_PURPLE + "Both teams won!";
+		}
+		if(win() == TeamType.RED) {
+			winningTeam = PbPlugin.getTeams().getTeamName(TeamType.RED) + ChatColor.DARK_PURPLE + "won!";
+		} else {
+			winningTeam = ChatColor.DARK_PURPLE + "Match doesn't has winning team!";
+		}
+		
 		TeamWonEvent event = new TeamWonEvent(win());
 		Bukkit.getPluginManager().callEvent(event);
 		
 		PbPlugin.getTeams().setJoinable(false);
 		PbPlugin.getTeams().setRunning(false);
 		
+		Teams.endGame(allowVote);
+		
 		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "########################");
-		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "#   " + PbPlugin.getTeams().getTeamName(win()) + ChatColor.DARK_PURPLE + " won!" + "   #");
+		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "#   " + winningTeam + "   #");
 		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "########################");
 		Bukkit.broadcastMessage(ChatColor.GOLD + "Thanks for playing! Say 'Good Game' to all!");
-		Bukkit.broadcastMessage(ChatColor.GOLD + "Vote new map by using /vote, you have 20 second for that!");
+		
+		if(allowVote == true) {
+			Bukkit.broadcastMessage(ChatColor.GOLD + "Vote new map by using /vote, you have 20 second for that!");
+		}
+		
+		vote = allowVote;
 	}
 	
 	@Override
@@ -55,6 +78,11 @@ public class Match implements pl.themolka.paintball.api.Match{
 	}
 	
 	@Override
+	public boolean isVote() {
+		return vote;
+	}
+	
+	@Override
 	public void setScore(TeamType teamType, int amount) {
 		if(teamType == TeamType.BLUE) {
 			blueScore = amount;
@@ -62,6 +90,11 @@ public class Match implements pl.themolka.paintball.api.Match{
 		if(teamType == TeamType.RED) {
 			redScore = amount;
 		}
+	}
+	
+	@Override
+	public void setVote(boolean allowVote) {
+		vote = allowVote;
 	}
 	
 	@Override
@@ -96,7 +129,7 @@ public class Match implements pl.themolka.paintball.api.Match{
 		if(PbPlugin.getMatch().getScore(TeamType.RED) > PbPlugin.getMatch().getScore(TeamType.BLUE)) {
 			return TeamType.RED;
 		} else {
-			return null;
+			return TeamType.RANDOM;
 		}
 	}
 	

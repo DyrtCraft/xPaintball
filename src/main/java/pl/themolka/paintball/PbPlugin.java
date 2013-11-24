@@ -1,6 +1,7 @@
 package pl.themolka.paintball;
 
 import pl.themolka.paintball.api.Help;
+import pl.themolka.paintball.api.NavigateItems;
 import pl.themolka.paintball.api.Teams;
 
 public final class PbPlugin {
@@ -9,10 +10,12 @@ public final class PbPlugin {
 	
 	private static Paintball plugin = new Paintball();
 	private static BungeeConnector bungeeConnector = new BungeeConnector(plugin);
+	private static String currnetMap;
 	private static Help help = new pl.themolka.paintball.Help();
 	private static Items items = new pl.themolka.paintball.Items();
 	private static Map map = new pl.themolka.paintball.Map(plugin, mapName);
 	private static Match match = new pl.themolka.paintball.Match(plugin);
+	private static NavigateItems navigateItems = new pl.themolka.paintball.NavigateItems();
 	private static Teams teams = new pl.themolka.paintball.Teams(plugin);
 	
 	/**
@@ -28,8 +31,7 @@ public final class PbPlugin {
 	 * @return Map
 	 */
 	public static Map getCurrentMap() {
-		mapName = ""; // TODO
-		return map;
+		return PbPlugin.map = PbPlugin.getMap(PbPlugin.currnetMap);
 	}
 	
 	/**
@@ -53,8 +55,16 @@ public final class PbPlugin {
 		return match;
 	}
 	
+	public static NavigateItems getNavigateItems() {
+		return navigateItems;
+	}
+	
 	public static Teams getTeams() {
 		return teams;
+	}
+	
+	public static void setCurrentMap(String currentMap) {
+		PbPlugin.currnetMap = currentMap;
 	}
 	
 }
