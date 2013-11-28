@@ -32,25 +32,25 @@ public class VoteInventory implements Listener {
 		inv = Bukkit.createInventory(null, 9, ChatColor.GOLD + "Vote new map!");
 		
 		// TESTS START
-		_0 = newMap(PbPlugin.getMap("Moja testowa mapa"));
+		_0 = newMap(PbPlugin.getMap("Default_Map"));
 		// TESTS END
 		
 		inv.setItem(0, _0);
-		inv.setItem(0, _1);
-		inv.setItem(0, _2);
-		inv.setItem(0, _3);
-		inv.setItem(0, _4);
-		inv.setItem(0, _5);
-		inv.setItem(0, _6);
-		inv.setItem(0, _7);
-		inv.setItem(0, _8);
+		inv.setItem(1, _1);
+		inv.setItem(2, _2);
+		inv.setItem(3, _3);
+		inv.setItem(4, _4);
+		inv.setItem(5, _5);
+		inv.setItem(6, _6);
+		inv.setItem(7, _7);
+		inv.setItem(8, _8);
 	}
 	
 	private ItemStack newMap(Map map) {
 		ItemStack i = new ItemStack(Material.EMPTY_MAP, 1);
 		ItemMeta iMeta = i.getItemMeta();
 		iMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + map.getName());
-		iMeta.setLore(Arrays.asList("Description: " + map.getDescription(), "Max players per team: " + map.getMaxPlayers(), "Author(s): " + map.getAuthors()));
+		iMeta.setLore(Arrays.asList("Description: " + ChatColor.GOLD + map.getDescription(), "Max players per team: " + ChatColor.GOLD + map.getMaxPlayers(), "Author(s): " + ChatColor.GOLD + map.getAuthors()));
 		i.setItemMeta(iMeta);
 		return i;
 	}
@@ -62,11 +62,26 @@ public class VoteInventory implements Listener {
 		e.setCancelled(true);
 		Player player = (Player) e.getWhoClicked();
 		
-		if(VoteCommand.votedPlayers.contains(player.getName())) {
-			player.sendMessage(ChatColor.RED + "You have already voted new map! Your vote can not be change.");
-			player.closeInventory();
-			return;
-		}
+		try {
+			if(VoteCommand.votedPlayers.contains(player.getName())) {
+				player.sendMessage(ChatColor.RED + "You have already voted new map! Your vote can not be change.");
+				player.closeInventory();
+				return;
+			} else {
+				if(e.getCurrentItem().getType() == Material.EMPTY_MAP) {
+					ItemMeta map = e.getCurrentItem().getItemMeta();
+					
+					/*
+					 * TODO Voting
+					 */
+					
+					VoteCommand.votedPlayers.add(player.getName());
+					player.sendMessage(ChatColor.DARK_PURPLE + "" + "You have successfully voted " + ChatColor.RESET + map.getDisplayName() + ChatColor.DARK_PURPLE + ".");
+					player.closeInventory();
+					player.getInventory().removeItem(PbPlugin.getNavigateItems().mapVoter());
+				}
+			}
+		} catch(NullPointerException ex) {}
 	}
 	
 }

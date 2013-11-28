@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 
 import pl.themolka.paintball.api.TeamType;
 import pl.themolka.paintball.api.events.TeamWonEvent;
+import pl.themolka.paintball.commands.VoteCommand;
 import pl.themolka.paintball.tasks.MatchTask;
 
 public class Match implements pl.themolka.paintball.api.Match{
@@ -66,6 +67,11 @@ public class Match implements pl.themolka.paintball.api.Match{
 	}
 	
 	@Override
+	public String getCurrentMapInfo() {
+		return ChatColor.DARK_PURPLE + "Currently playing: " + ChatColor.GOLD + PbPlugin.getCurrentMap().getName() + ChatColor.DARK_PURPLE + " by " + ChatColor.GOLD + PbPlugin.getCurrentMap().getAuthors() + ChatColor.DARK_PURPLE + "!";
+	}
+	
+	@Override
 	public int getScore(TeamType teamType) {
 		if(teamType == TeamType.BLUE) {
 			return blueScore;
@@ -113,6 +119,7 @@ public class Match implements pl.themolka.paintball.api.Match{
 		}
 		
 		teams.setRunning(true);
+		VoteCommand.votedPlayers.clear();
 		
 		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "########################");
 		Bukkit.broadcastMessage(ChatColor.DARK_PURPLE + "# " + ChatColor.DARK_GREEN + "The match has started!" + ChatColor.DARK_PURPLE + " #");

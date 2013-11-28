@@ -1,0 +1,70 @@
+package pl.themolka.paintball;
+
+import java.util.ArrayList;
+import java.util.logging.Level;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
+import pl.themolka.paintball.api.Map;
+import pl.themolka.paintball.api.TeamType;
+
+public class MapManager implements pl.themolka.paintball.api.MapManager {
+	
+	private Map currentMap;
+	
+	@Override
+	public Map getCurrentMap() {
+		return currentMap;
+	}
+	
+	@Override
+	public ArrayList<String> getMaps() {
+		// TESTS
+		ArrayList<String> maps = new ArrayList<String>();
+		maps.add("Default_Map");
+		maps.add("Another_default_map");
+		return maps;
+	}
+	
+	@Deprecated
+	@Override
+	public void load(Map map) {
+		if(!Bukkit.getWorlds().contains(map.getName())) {
+			Bukkit.getLogger().log(Level.WARNING, ChatColor.RED + "World with name \"" + map.getName() + "\" was not found!");
+			return;
+		}
+		/*
+		 * TODO Load
+		 */
+	}
+	
+	@Override
+	public void setCurrentMap(Map currentMap) {
+		this.currentMap = currentMap;
+	}
+	
+	@Override
+	public void teleport(Player player, Map map) {
+		if(!Bukkit.getWorlds().contains(map.getName())) {
+			Bukkit.getLogger().log(Level.WARNING, ChatColor.RED + "World with name \"" + map.getName() + "\" was not found!");
+			player.sendMessage(ChatColor.RED + "World with name \"" + map.getName() + "\" was not found! You're teleportation has been cancelled!");
+			return;
+		}
+		player.teleport(PbPlugin.getMap(map.getName()).getSpawn(TeamType.OBSERVATOR));
+	}
+	
+	@Deprecated
+	@Override
+	public void unLoad(Map map) {
+		if(!Bukkit.getWorlds().contains(map.getName())) {
+			Bukkit.getLogger().log(Level.WARNING, ChatColor.RED + "World with name \"" + map.getName() + "\" was not found!");
+			return;
+		}
+		/*
+		 * TODO Unload
+		 */
+	}
+	
+}

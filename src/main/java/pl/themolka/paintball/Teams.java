@@ -162,14 +162,6 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 				TagAPI.refreshPlayer(player);
 				player.setPlayerListName(ChatColor.BLUE + player.getName() + ChatColor.RESET);
 				
-				for(Player players : Bukkit.getOnlinePlayers()) {
-					if(!Teams.getBluePlayers.contains(player.getName()) && !Teams.getRedPlayers.contains(player.getName())) {
-						players.hidePlayer(player);
-					} else {
-						players.showPlayer(player);
-					}
-				}
-				
 				player.sendMessage(ChatColor.DARK_PURPLE + "You have joined to the " + getTeamName(TeamType.BLUE) + ChatColor.DARK_PURPLE + ".");
 				check(player, TeamType.BLUE);
 				return;
@@ -183,8 +175,8 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 				TagAPI.refreshPlayer(player);
 				player.setPlayerListName(ChatColor.RED + player.getName() + ChatColor.RESET);
 				
-				check(player, TeamType.RED);
 				player.sendMessage(ChatColor.DARK_PURPLE + "You have joined to the " + getTeamName(TeamType.RED) + ChatColor.DARK_PURPLE + ".");
+				check(player, TeamType.RED);
 				return;
 			}
 		}
@@ -199,9 +191,6 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 			Teams.getBluePlayers.remove(player.getName());
 			Teams.getRedPlayers.remove(player.getName());
 			
-			if(player.getGameMode() == GameMode.CREATIVE) {
-				player.setGameMode(GameMode.SURVIVAL);
-			}
 			player.damage(20.0);
 			player.setGameMode(GameMode.CREATIVE);
 			player.setDisplayName(ChatColor.AQUA + player.getName());
@@ -220,7 +209,9 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 			player.getInventory().setLeggings(null);
 			player.getInventory().setBoots(null);
 			player.getInventory().setItem(0, PbPlugin.getNavigateItems().compass());
-			player.getInventory().setItem(1, PbPlugin.getNavigateItems().teamChooser());
+			if(PbPlugin.getTeams().isJoinable()) {
+				player.getInventory().setItem(1, PbPlugin.getNavigateItems().teamChooser());
+			}
 			if(PbPlugin.getMatch().isVote()) {
 				player.getInventory().setItem(2, PbPlugin.getNavigateItems().mapVoter());
 			}

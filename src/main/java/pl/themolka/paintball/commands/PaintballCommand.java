@@ -9,6 +9,7 @@ import pl.themolka.paintball.Paintball;
 import pl.themolka.paintball.PbPlugin;
 import pl.themolka.paintball.commands.pbcmd.About;
 import pl.themolka.paintball.commands.pbcmd.Commands;
+import pl.themolka.paintball.commands.pbcmd.Maplist;
 
 public class PaintballCommand implements CommandExecutor {
 	
@@ -38,10 +39,12 @@ public class PaintballCommand implements CommandExecutor {
 					
 				}
 				if(args[0].equalsIgnoreCase("map")) {
-					
+					//Map.execute(sender, command, label, args);
+					return true;
 				}
 				if(args[0].equalsIgnoreCase("maplist")) {
-					
+					Maplist.execute(sender, command, label, args);
+					return true;
 				}
 				if(args[0].equalsIgnoreCase("match")) {
 					

@@ -6,6 +6,8 @@ public interface Match {
 	
 	public void end(boolean allowVote);
 	
+	public String getCurrentMapInfo();
+	
 	public int getScore(TeamType teamType);
 	
 	public boolean isVote();

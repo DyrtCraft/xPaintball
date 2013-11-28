@@ -90,21 +90,23 @@ public class TeamChooserInventory implements Listener {
 		e.setCancelled(true);
 		Player player = (Player) e.getWhoClicked();
 		
-		if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(auto.getItemMeta().getDisplayName())) {
-			PbPlugin.getTeams().setTeam(player, null);
-			player.closeInventory();
-		}
-		if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(blue.getItemMeta().getDisplayName())) {
-			PbPlugin.getTeams().setTeam(player, TeamType.BLUE);
-			player.closeInventory();
-		}
-		if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(red.getItemMeta().getDisplayName())) {
-			PbPlugin.getTeams().setTeam(player, TeamType.RED);
-			player.closeInventory();
-		}
-		if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(quit.getItemMeta().getDisplayName())) {
-			player.closeInventory();
-		}
+		try {
+			if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(auto.getItemMeta().getDisplayName())) {
+				PbPlugin.getTeams().setTeam(player, null);
+				player.closeInventory();
+			}
+			if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(blue.getItemMeta().getDisplayName())) {
+				PbPlugin.getTeams().setTeam(player, TeamType.BLUE);
+				player.closeInventory();
+			}
+			if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(red.getItemMeta().getDisplayName())) {
+				PbPlugin.getTeams().setTeam(player, TeamType.RED);
+				player.closeInventory();
+			}
+			if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(quit.getItemMeta().getDisplayName())) {
+				player.closeInventory();
+			}
+		} catch(NullPointerException ex) {}
 	}
 	
 }

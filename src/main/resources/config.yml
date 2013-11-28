@@ -1,0 +1,14 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#               Paintball  configuration  file  (Paintball by TheMolkaPL)               #
+#   ========================== Follow the instructions at: ==========================   #
+# https://github.com/TheMolkaPL/Paintball/blob/Dev-builds/src/main/resources/config.yml #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# Setting Paintball for a BungeeCord by md-5
+bungee-cord:
+    # If server is running by BungeeCord set to 'true'
+    enable: false
+    # Type name of Lobby server in BungeeCord
+    hub-server: lobby
+# Set a match time in minutes
+match-time: 5

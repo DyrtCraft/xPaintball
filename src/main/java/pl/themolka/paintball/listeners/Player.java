@@ -54,7 +54,7 @@ public class Player implements Listener {
 		}
 		
 		if(PbPlugin.getTeams().isJoinable()) {
-			e.getPlayer().sendMessage(ChatColor.DARK_PURPLE + "Currently playing: " + ChatColor.GOLD + map.getName() + ChatColor.DARK_PURPLE + " by " + ChatColor.GOLD + map.getAuthors() + ChatColor.DARK_PURPLE + "!");
+			e.getPlayer().sendMessage(PbPlugin.getMatch().getCurrentMapInfo());
 			e.getPlayer().openInventory(TeamChooserInventory.inv);
 		}
 		if(!PbPlugin.getTeams().isJoinable()) {

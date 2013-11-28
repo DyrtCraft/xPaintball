@@ -14,11 +14,11 @@ import pl.themolka.paintball.listeners.Observator;
 import pl.themolka.paintball.listeners.Player;
 import pl.themolka.paintball.listeners.PlayerMove;
 import pl.themolka.paintball.listeners.Tag;
+import pl.themolka.paintball.listeners.World;
 
 public class Paintball extends JavaPlugin {
 
 	private static Paintball paintball = null;
-	private Teams teams;
 	
 	@Override
 	public void onEnable() {
@@ -26,22 +26,28 @@ public class Paintball extends JavaPlugin {
 		getLogger().info("Loading Paintball plugin v" + getDescription().getVersion() + " by " + getDescription().getAuthors() + "...");
 		
 		paintball = this;
-		teams = new Teams(this);
+		saveDefaultConfig();
 		
 		registerCommands();
 		registerListeners();
 		
+		if(!(getServer().getPluginManager().getPlugin("PaintballChat") == null)) {
+			getLogger().info("PaintballChat plugin was found!");
+			PbPlugin.getPluginsManager().setPaintballChat(true);
+		}
+		
 		Long finLoadTime = System.currentTimeMillis() - loadTime;
 		getLogger().info("Paintball v" + getDescription().getVersion() + " by " + getDescription().getAuthors() + " has been loaded! (" + finLoadTime + " ms)");
 		
-		teams.setJoinable(true);
-		teams.setRunning(false);
+		PbPlugin.getTeams().setJoinable(true);
+		PbPlugin.getTeams().setRunning(false);
 	}
 	
 	@Override
 	public void onDisable() {
 		PbPlugin.getMatch().end(false);
 		PbPlugin.getBungeeConnector().kickAllToHub();
+		saveConfig();
 	}
 	
 	public void registerCommands() {
@@ -59,6 +65,7 @@ public class Paintball extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Player(this), this);
 		getServer().getPluginManager().registerEvents(new PlayerMove(this), this);
 		getServer().getPluginManager().registerEvents(new Tag(this), this);
+		getServer().getPluginManager().registerEvents(new World(), this);
 		
 		getServer().getPluginManager().registerEvents(new TeamChooserInventory(this), this);
 		getServer().getPluginManager().registerEvents(new VoteInventory(this), this);

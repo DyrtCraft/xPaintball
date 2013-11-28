@@ -1,0 +1,45 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#              Paintball  maps  settings  file (Paintball by TheMolkaPL)              #
+#   ========================= Follow the instructions at: =========================   #
+# https://github.com/TheMolkaPL/Paintball/blob/Dev-builds/src/main/resources/maps.yml #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# List of maps some will be enable (all '_' will be replace to space)
+map-list: [Default_Map]
+# All maps
+maps:
+    # Map 'Default_Map'
+    Default_Map:
+        # Map author or authors
+        authors: TheMolkaPL
+        # Map version
+        version: 1.0
+        # Map description
+        description: 'The default look of Paintball plugin'
+        # Max players per team. Type '-1', if you will create non-slots matches
+        max-players: 25
+        # Blue team settings
+        blue:
+            # Set a name of this team (see on scoreboard)
+            name: '&1Blue team'
+            # Set a spawn-point location of this team
+            spawn-point:
+                x: 30
+                y: 10
+                z: 0
+        # Red team settings
+        red:
+            # Set a name of this team (see on scoreboard)
+            name: '&4Red team'
+            # Set a spawn-point location of this team
+            spawn-point:
+                x: -30
+                y: 10
+                z: 0
+        # Observator settings
+        observator:
+            # Set a spawn-point location of this team
+            spawn-point:
+                x: 0
+                y: 25
+                z: 0

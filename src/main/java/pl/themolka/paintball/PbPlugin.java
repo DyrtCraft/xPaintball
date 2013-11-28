@@ -14,8 +14,10 @@ public final class PbPlugin {
 	private static Help help = new pl.themolka.paintball.Help();
 	private static Items items = new pl.themolka.paintball.Items();
 	private static Map map = new pl.themolka.paintball.Map(plugin, mapName);
+	private static MapManager mapManager = new pl.themolka.paintball.MapManager();
 	private static Match match = new pl.themolka.paintball.Match(plugin);
 	private static NavigateItems navigateItems = new pl.themolka.paintball.NavigateItems();
+	private static PaintballPluginsManager pluginManager = new pl.themolka.paintball.PaintballPluginsManager();
 	private static Teams teams = new pl.themolka.paintball.Teams(plugin);
 	
 	/**
@@ -51,12 +53,20 @@ public final class PbPlugin {
 		return map;
 	}
 	
+	public static MapManager getMapManager() {
+		return mapManager;
+	}
+	
 	public static Match getMatch() {
 		return match;
 	}
 	
 	public static NavigateItems getNavigateItems() {
 		return navigateItems;
+	}
+	
+	public static PaintballPluginsManager getPluginsManager() {
+		return pluginManager;
 	}
 	
 	public static Teams getTeams() {

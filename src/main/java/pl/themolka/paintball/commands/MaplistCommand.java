@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import pl.themolka.paintball.Paintball;
+import pl.themolka.paintball.commands.pbcmd.Maplist;
 
 public class MaplistCommand implements CommandExecutor {
 	
@@ -16,7 +17,8 @@ public class MaplistCommand implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		return false;
+		Maplist.execute(sender, command, label, args);
+		return true;
 	}
 	
 }
