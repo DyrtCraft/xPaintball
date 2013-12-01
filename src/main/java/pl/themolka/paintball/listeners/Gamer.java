@@ -7,8 +7,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.Teams;
 import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.game.Teams;
 
 public class Gamer implements Listener {
 	

@@ -3,6 +3,9 @@ package pl.themolka.paintball;
 import pl.themolka.paintball.api.Help;
 import pl.themolka.paintball.api.NavigateItems;
 import pl.themolka.paintball.api.Teams;
+import pl.themolka.paintball.game.Map;
+import pl.themolka.paintball.game.MapManager;
+import pl.themolka.paintball.game.Match;
 
 public final class PbPlugin {
 	
@@ -10,15 +13,15 @@ public final class PbPlugin {
 	
 	private static Paintball plugin = new Paintball();
 	private static BungeeConnector bungeeConnector = new BungeeConnector(plugin);
-	private static String currnetMap;
+	private static Map currnetMap;
 	private static Help help = new pl.themolka.paintball.Help();
 	private static Items items = new pl.themolka.paintball.Items();
-	private static Map map = new pl.themolka.paintball.Map(plugin, mapName);
-	private static MapManager mapManager = new pl.themolka.paintball.MapManager();
-	private static Match match = new pl.themolka.paintball.Match(plugin);
+	private static Map map = new pl.themolka.paintball.game.Map(plugin, mapName);
+	private static MapManager mapManager = new pl.themolka.paintball.game.MapManager(plugin);
+	private static Match match = new pl.themolka.paintball.game.Match(plugin);
 	private static NavigateItems navigateItems = new pl.themolka.paintball.NavigateItems();
 	private static PaintballPluginsManager pluginManager = new pl.themolka.paintball.PaintballPluginsManager();
-	private static Teams teams = new pl.themolka.paintball.Teams(plugin);
+	private static Teams teams = new pl.themolka.paintball.game.Teams(plugin);
 	
 	/**
 	 * BungeeCord
@@ -33,7 +36,7 @@ public final class PbPlugin {
 	 * @return Map
 	 */
 	public static Map getCurrentMap() {
-		return PbPlugin.map = PbPlugin.getMap(PbPlugin.currnetMap);
+		return PbPlugin.currnetMap;
 	}
 	
 	/**
@@ -73,7 +76,7 @@ public final class PbPlugin {
 		return teams;
 	}
 	
-	public static void setCurrentMap(String currentMap) {
+	public static void setCurrentMap(Map currentMap) {
 		PbPlugin.currnetMap = currentMap;
 	}
 	

@@ -1,4 +1,4 @@
-package pl.themolka.paintball;
+package pl.themolka.paintball.game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.kitteh.tag.TagAPI;
 
+import pl.themolka.paintball.Paintball;
+import pl.themolka.paintball.PbPlugin;
 import pl.themolka.paintball.api.TeamType;
 import pl.themolka.paintball.api.events.PlayerJoinTeamEvent;
 import pl.themolka.paintball.tasks.StartTask;

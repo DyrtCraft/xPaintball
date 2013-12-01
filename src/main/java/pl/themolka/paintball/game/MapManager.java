@@ -1,31 +1,35 @@
-package pl.themolka.paintball;
+package pl.themolka.paintball.game;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import pl.themolka.paintball.Paintball;
+import pl.themolka.paintball.PbPlugin;
 import pl.themolka.paintball.api.Map;
 import pl.themolka.paintball.api.TeamType;
 
 public class MapManager implements pl.themolka.paintball.api.MapManager {
 	
-	private Map currentMap;
+	private Paintball plugin;
 	
-	@Override
-	public Map getCurrentMap() {
-		return currentMap;
+	public MapManager(Paintball plugin) {
+		this.plugin = plugin;
 	}
 	
 	@Override
 	public ArrayList<String> getMaps() {
-		// TESTS
-		ArrayList<String> maps = new ArrayList<String>();
-		maps.add("Default_Map");
-		maps.add("Another_default_map");
-		return maps;
+		ArrayList<String> allMaps = new ArrayList<String>();
+		List<String> maps =  plugin.getConfig().getStringList("map-list");
+		
+		for(String map : maps) {
+			allMaps.add(map);
+		}
+		return allMaps;
 	}
 	
 	@Deprecated
@@ -38,11 +42,6 @@ public class MapManager implements pl.themolka.paintball.api.MapManager {
 		/*
 		 * TODO Load
 		 */
-	}
-	
-	@Override
-	public void setCurrentMap(Map currentMap) {
-		this.currentMap = currentMap;
 	}
 	
 	@Override

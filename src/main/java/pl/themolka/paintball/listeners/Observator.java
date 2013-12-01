@@ -16,7 +16,7 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 
 import pl.themolka.paintball.Paintball;
 //import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.Teams;
+import pl.themolka.paintball.game.Teams;
 import pl.themolka.paintball.inventories.TeamChooserInventory;
 import pl.themolka.paintball.inventories.VoteInventory;
 

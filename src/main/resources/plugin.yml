@@ -1,9 +1,9 @@
-name: Paintball
+name: xPaintball
 version: Alpha 0.1
-description: Paintball by TheMolkaPL
+description: xPaintball by TheMolkaPL
 author: TheMolkaPL
-prefix: Paintball
-loadbefore: [PaintballChat]
+prefix: xPaintball
+loadbefore: [xPaintballChat]
 
 main: pl.themolka.paintball.Paintball
 

@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.kitteh.tag.PlayerReceiveNameTagEvent;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.Teams;
+import pl.themolka.paintball.game.Teams;
 
 public class Tag implements Listener {
 	

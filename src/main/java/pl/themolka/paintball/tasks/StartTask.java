@@ -5,7 +5,7 @@ import org.bukkit.ChatColor;
 
 import pl.themolka.paintball.Paintball;
 import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.Teams;
+import pl.themolka.paintball.game.Teams;
 
 public class StartTask implements Runnable {
 	

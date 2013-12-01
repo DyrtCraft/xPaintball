@@ -1,9 +1,11 @@
-package pl.themolka.paintball;
+package pl.themolka.paintball.game;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import pl.themolka.paintball.Paintball;
+import pl.themolka.paintball.PbPlugin;
 import pl.themolka.paintball.api.TeamType;
 import pl.themolka.paintball.api.events.TeamWonEvent;
 import pl.themolka.paintball.commands.VoteCommand;

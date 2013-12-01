@@ -1,10 +1,11 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#               Paintball  configuration  file  (Paintball by TheMolkaPL)               #
+#               xPaintball  configuration  file  (Paintball by TheMolkaPL)              #
 #   ========================== Follow the instructions at: ==========================   #
 # https://github.com/TheMolkaPL/Paintball/blob/Dev-builds/src/main/resources/config.yml #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# Setting Paintball for a BungeeCord by md-5
+# Setting Paintball for a BungeeCord proxy by md-5
+# For more informations about that proxy see http://www.spigotmc.org/wiki/about-bungeecord/ 
 bungee-cord:
     # If server is running by BungeeCord set to 'true'
     enable: false
@@ -12,3 +13,42 @@ bungee-cord:
     hub-server: lobby
 # Set a match time in minutes
 match-time: 5
+# List of maps some will be enable (all '_' will be replace to space)
+map-list: [Default_Map]
+# All maps
+maps:
+    # Map 'Default_Map'
+    Default_Map:
+        # Map author or authors
+        authors: TheMolkaPL
+        # Map version
+        version: 1.0
+        # Map description
+        description: 'The default look of Paintball plugin'
+        # Max players per team. Type '-1', if you will create non-slots matches
+        max-players: 25
+        # Blue team settings
+        blue:
+            # Set a name of this team (see on scoreboard)
+            name: '&1Blue team'
+            # Set a spawn-point location of this team
+            spawn-point:
+                x: 30
+                y: 10
+                z: 0
+        # Red team settings
+        red:
+            # Set a name of this team (see on scoreboard)
+            name: '&4Red team'
+            # Set a spawn-point location of this team
+            spawn-point:
+                x: -30
+                y: 10
+                z: 0
+        # Observator settings
+        observator:
+            # Set a spawn-point location of this team
+            spawn-point:
+                x: 0
+                y: 25
+                z: 0

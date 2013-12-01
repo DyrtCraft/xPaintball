@@ -8,8 +8,8 @@ import org.bukkit.entity.Player;
 
 import pl.themolka.paintball.Paintball;
 import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.Teams;
 import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.game.Teams;
 
 public class MyteamCommand implements CommandExecutor {
 	

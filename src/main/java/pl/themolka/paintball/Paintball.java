@@ -1,12 +1,19 @@
 package pl.themolka.paintball;
 
+import java.io.IOException;
+import java.util.logging.Level;
+
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.kitteh.tag.TagAPI;
+import org.mcstats.Metrics;
 
 import pl.themolka.paintball.commands.JoinCommand;
 import pl.themolka.paintball.commands.MaplistCommand;
 import pl.themolka.paintball.commands.MyteamCommand;
 import pl.themolka.paintball.commands.PaintballCommand;
 import pl.themolka.paintball.commands.VoteCommand;
+import pl.themolka.paintball.game.Map;
 import pl.themolka.paintball.inventories.TeamChooserInventory;
 import pl.themolka.paintball.inventories.VoteInventory;
 import pl.themolka.paintball.listeners.Gamer;
@@ -23,30 +30,48 @@ public class Paintball extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		Long loadTime = System.currentTimeMillis();
-		getLogger().info("Loading Paintball plugin v" + getDescription().getVersion() + " by " + getDescription().getAuthors() + "...");
+		getLogger().info("Loading xPaintball plugin v" + getDescription().getVersion() + " by " + getDescription().getAuthors() + "...");
 		
 		paintball = this;
+		
 		saveDefaultConfig();
+		
+		new Map(this, "Hardcore");
+		PbPlugin.setCurrentMap(PbPlugin.getMap("Hardcore"));
 		
 		registerCommands();
 		registerListeners();
 		
-		if(!(getServer().getPluginManager().getPlugin("PaintballChat") == null)) {
-			getLogger().info("PaintballChat plugin was found!");
+		if(!(getServer().getPluginManager().getPlugin("xPaintballChat") == null)) {
+			getLogger().info("Chat plugin (xPaintballChat) was found!");
 			PbPlugin.getPluginsManager().setPaintballChat(true);
 		}
 		
 		Long finLoadTime = System.currentTimeMillis() - loadTime;
-		getLogger().info("Paintball v" + getDescription().getVersion() + " by " + getDescription().getAuthors() + " has been loaded! (" + finLoadTime + " ms)");
+		getLogger().info("xPaintball v" + getDescription().getVersion() + " by " + getDescription().getAuthors() + " has been loaded! (" + finLoadTime + " ms)");
 		
 		PbPlugin.getTeams().setJoinable(true);
 		PbPlugin.getTeams().setRunning(false);
+		
+		for(org.bukkit.entity.Player player : Bukkit.getOnlinePlayers()) {
+			TagAPI.refreshPlayer(player);
+		}
+		
+		// Metrics start
+		try {
+			Metrics metrics = new Metrics(this);
+			metrics.start();
+		} catch(IOException ex) {
+			getLogger().log(Level.WARNING, "[MCStats] Failed to submit the stats :-(");
+		}
+		// Metrics end
 	}
 	
 	@Override
 	public void onDisable() {
 		PbPlugin.getMatch().end(false);
 		PbPlugin.getBungeeConnector().kickAllToHub();
+		
 		saveConfig();
 	}
 	
