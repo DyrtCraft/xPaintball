@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.kitteh.tag.TagAPI;
 import org.mcstats.Metrics;
 
+import pl.themolka.paintball.api.PbPlugin;
 import pl.themolka.paintball.commands.JoinCommand;
 import pl.themolka.paintball.commands.MaplistCommand;
 import pl.themolka.paintball.commands.MyteamCommand;
@@ -19,7 +20,7 @@ import pl.themolka.paintball.inventories.VoteInventory;
 import pl.themolka.paintball.listeners.Damage;
 import pl.themolka.paintball.listeners.Gamer;
 import pl.themolka.paintball.listeners.ItemUsage;
-import pl.themolka.paintball.listeners.Observator;
+import pl.themolka.paintball.listeners.Observer;
 import pl.themolka.paintball.listeners.Player;
 import pl.themolka.paintball.listeners.PlayerMove;
 import pl.themolka.paintball.listeners.Tag;
@@ -28,6 +29,13 @@ import pl.themolka.paintball.listeners.World;
 public class Paintball extends JavaPlugin {
 
 	private static Paintball paintball = null;
+	
+	public void onLoad() {
+		if(!(getServer().getPluginManager().getPlugin("xPaintballChat") == null)) {
+			getLogger().info("Chat plugin (xPaintballChat) was found!");
+			PbPlugin.getPluginsManager().setPaintballChat(true);
+		}
+	}
 	
 	@Override
 	public void onEnable() {
@@ -43,11 +51,6 @@ public class Paintball extends JavaPlugin {
 		
 		registerCommands();
 		registerListeners();
-		
-		if(!(getServer().getPluginManager().getPlugin("xPaintballChat") == null)) {
-			getLogger().info("Chat plugin (xPaintballChat) was found!");
-			PbPlugin.getPluginsManager().setPaintballChat(true);
-		}
 		
 		Long finLoadTime = System.currentTimeMillis() - loadTime;
 		getLogger().info("xPaintball v" + getDescription().getVersion() + " by " + getDescription().getAuthors() + " has been loaded! (" + finLoadTime + " ms)");
@@ -90,7 +93,7 @@ public class Paintball extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Damage(this), this);
 		getServer().getPluginManager().registerEvents(new Gamer(this), this);
 		getServer().getPluginManager().registerEvents(new ItemUsage(this), this);
-		getServer().getPluginManager().registerEvents(new Observator(this), this);
+		getServer().getPluginManager().registerEvents(new Observer(this), this);
 		getServer().getPluginManager().registerEvents(new Player(this), this);
 		getServer().getPluginManager().registerEvents(new PlayerMove(this), this);
 		getServer().getPluginManager().registerEvents(new Tag(this), this);

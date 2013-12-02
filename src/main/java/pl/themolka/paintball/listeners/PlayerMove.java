@@ -5,8 +5,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.PbPlugin;
+import pl.themolka.paintball.api.game.TeamType;
 import pl.themolka.paintball.game.Teams;
 
 public class PlayerMove implements Listener {

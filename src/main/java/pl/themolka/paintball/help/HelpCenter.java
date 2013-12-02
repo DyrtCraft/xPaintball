@@ -1,9 +1,9 @@
-package pl.themolka.paintball;
+package pl.themolka.paintball.help;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-public class Help implements pl.themolka.paintball.api.Help {
+public class HelpCenter implements pl.themolka.paintball.api.Help {
 	
 	@Override
 	public boolean getHelp(CommandSender sender, String command) {

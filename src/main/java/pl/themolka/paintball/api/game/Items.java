@@ -1,4 +1,4 @@
-package pl.themolka.paintball.api;
+package pl.themolka.paintball.api.game;
 
 import org.bukkit.inventory.ItemStack;
 

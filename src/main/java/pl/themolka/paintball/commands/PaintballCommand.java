@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
+import pl.themolka.paintball.api.PbPlugin;
 import pl.themolka.paintball.commands.pbcmd.About;
 import pl.themolka.paintball.commands.pbcmd.Commands;
 import pl.themolka.paintball.commands.pbcmd.Maplist;

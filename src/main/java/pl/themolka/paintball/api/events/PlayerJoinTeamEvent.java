@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.game.TeamType;
 
 public class PlayerJoinTeamEvent extends Event {
 	

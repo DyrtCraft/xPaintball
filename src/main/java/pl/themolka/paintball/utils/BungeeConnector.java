@@ -1,4 +1,4 @@
-package pl.themolka.paintball;
+package pl.themolka.paintball.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -8,10 +8,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-public class BungeeConnector implements pl.themolka.paintball.api.BungeeConnector {
+import pl.themolka.paintball.Paintball;
+
+public class BungeeConnector implements pl.themolka.paintball.api.utils.BungeeConnector {
 	
 	Paintball plugin;
-	pl.themolka.paintball.api.BungeeConnector bungee;
+	pl.themolka.paintball.api.utils.BungeeConnector bungee;
 	
 	public BungeeConnector(Paintball plugin) {
 		this.plugin = plugin;

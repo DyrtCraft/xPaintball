@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.game.TeamType;
 import pl.themolka.paintball.game.Teams;
 
 public class JoinCommand implements CommandExecutor {

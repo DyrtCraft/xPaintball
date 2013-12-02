@@ -9,11 +9,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.Map;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.PbPlugin;
+import pl.themolka.paintball.api.game.Map;
+import pl.themolka.paintball.api.game.TeamType;
 
-public class MapManager implements pl.themolka.paintball.api.MapManager {
+public class MapManager implements pl.themolka.paintball.api.game.MapManager {
 	
 	private Paintball plugin;
 	

@@ -7,8 +7,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.PbPlugin;
+import pl.themolka.paintball.api.game.TeamType;
 
 public class ItemUsage implements Listener {
 	

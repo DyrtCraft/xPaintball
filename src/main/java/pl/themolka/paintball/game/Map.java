@@ -4,9 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.game.TeamType;
 
-public class Map implements pl.themolka.paintball.api.Map {
+public class Map implements pl.themolka.paintball.api.game.Map {
 	
 	Paintball plugin;
 	private String authors;

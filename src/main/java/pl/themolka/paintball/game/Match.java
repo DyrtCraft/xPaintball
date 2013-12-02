@@ -5,13 +5,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.PbPlugin;
 import pl.themolka.paintball.api.events.TeamWonEvent;
+import pl.themolka.paintball.api.game.TeamType;
 import pl.themolka.paintball.commands.VoteCommand;
 import pl.themolka.paintball.tasks.MatchTask;
 
-public class Match implements pl.themolka.paintball.api.Match{
+public class Match implements pl.themolka.paintball.api.game.Match{
 	
 	Paintball plugin;
 	Teams teams;

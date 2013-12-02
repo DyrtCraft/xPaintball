@@ -5,8 +5,8 @@ import java.util.List;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.PbPlugin;
+import pl.themolka.paintball.api.game.TeamType;
 
 public class TeamWonEvent extends Event {
 	

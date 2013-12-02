@@ -16,8 +16,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.Wool;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.PbPlugin;
+import pl.themolka.paintball.api.game.TeamType;
 
 public class TeamChooserInventory implements Listener {
 	

@@ -6,7 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import pl.themolka.paintball.PbPlugin;
+import pl.themolka.paintball.api.PbPlugin;
 
 public class Maplist {
 	

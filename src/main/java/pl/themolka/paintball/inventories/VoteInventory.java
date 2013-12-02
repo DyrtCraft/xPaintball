@@ -14,8 +14,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.Map;
+import pl.themolka.paintball.api.PbPlugin;
+import pl.themolka.paintball.api.game.Map;
 import pl.themolka.paintball.commands.VoteCommand;
 
 public class VoteInventory implements Listener {

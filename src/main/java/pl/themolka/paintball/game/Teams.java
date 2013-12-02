@@ -14,12 +14,12 @@ import org.bukkit.potion.PotionEffectType;
 import org.kitteh.tag.TagAPI;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.PbPlugin;
 import pl.themolka.paintball.api.events.PlayerJoinTeamEvent;
+import pl.themolka.paintball.api.game.TeamType;
 import pl.themolka.paintball.tasks.StartTask;
 
-public class Teams implements pl.themolka.paintball.api.Teams {
+public class Teams implements pl.themolka.paintball.api.game.Teams {
 
 	Paintball plugin;
 	private static Teams instance;

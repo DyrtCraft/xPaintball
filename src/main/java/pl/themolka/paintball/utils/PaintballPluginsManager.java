@@ -1,6 +1,6 @@
-package pl.themolka.paintball;
+package pl.themolka.paintball.utils;
 
-public class PaintballPluginsManager implements pl.themolka.paintball.api.PaintballPluginsManager {
+public class PaintballPluginsManager implements pl.themolka.paintball.api.utils.PaintballPluginsManager {
 	
 	private boolean chat = false;
 	

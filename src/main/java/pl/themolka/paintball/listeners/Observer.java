@@ -20,12 +20,12 @@ import pl.themolka.paintball.game.Teams;
 import pl.themolka.paintball.inventories.TeamChooserInventory;
 import pl.themolka.paintball.inventories.VoteInventory;
 
-public class Observator implements Listener {
+public class Observer implements Listener {
 	
 	Paintball plugin;
 	Teams teams;
 	
-	public Observator(Paintball plugin) {
+	public Observer(Paintball plugin) {
 		this.plugin = plugin;
 		this.teams = new Teams(plugin);
 	}

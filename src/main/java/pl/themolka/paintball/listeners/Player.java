@@ -8,9 +8,9 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import pl.themolka.paintball.Paintball;
-import pl.themolka.paintball.PbPlugin;
-import pl.themolka.paintball.api.Map;
-import pl.themolka.paintball.api.TeamType;
+import pl.themolka.paintball.api.PbPlugin;
+import pl.themolka.paintball.api.game.Map;
+import pl.themolka.paintball.api.game.TeamType;
 import pl.themolka.paintball.game.Teams;
 import pl.themolka.paintball.inventories.TeamChooserInventory;
 
