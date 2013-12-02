@@ -35,7 +35,7 @@ public class JoinCommand implements CommandExecutor {
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("obs")) {
-					Teams.getInstance().setTeam((Player) sender, TeamType.OBSERVATOR);
+					Teams.getInstance().setTeam((Player) sender, TeamType.OBSERVER);
 					return true;
 				}
 				if(args[0].equalsIgnoreCase("red")) {

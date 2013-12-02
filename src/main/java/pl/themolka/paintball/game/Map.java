@@ -76,7 +76,7 @@ public class Map implements pl.themolka.paintball.api.Map {
 		if(teamType == TeamType.BLUE) {
 			return spawnBlue;
 		}
-		if(teamType == TeamType.OBSERVATOR) {
+		if(teamType == TeamType.OBSERVER) {
 			return spawnObs;
 		}
 		if(teamType == TeamType.RED) {

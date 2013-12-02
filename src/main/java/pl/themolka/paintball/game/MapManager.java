@@ -51,7 +51,7 @@ public class MapManager implements pl.themolka.paintball.api.MapManager {
 			player.sendMessage(ChatColor.RED + "World with name \"" + map.getName() + "\" was not found! You're teleportation has been cancelled!");
 			return;
 		}
-		player.teleport(PbPlugin.getMap(map.getName()).getSpawn(TeamType.OBSERVATOR));
+		player.teleport(PbPlugin.getMap(map.getName()).getSpawn(TeamType.OBSERVER));
 	}
 	
 	@Deprecated

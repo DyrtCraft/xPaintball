@@ -19,8 +19,8 @@ public class PlayerMove implements Listener {
 	
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent e) {
-		if(Teams.getInstance().isTeam(e.getPlayer(), TeamType.OBSERVATOR)) {
-			PbPlugin.getCurrentMap().getSpawn(TeamType.OBSERVATOR);
+		if(Teams.getInstance().isTeam(e.getPlayer(), TeamType.OBSERVER)) {
+			PbPlugin.getCurrentMap().getSpawn(TeamType.OBSERVER);
 			return;
 		} else {
 			if(PbPlugin.getTeams().isRunning()) {
@@ -30,7 +30,7 @@ public class PlayerMove implements Listener {
 				}
 			} else {
 				if(e.getTo().getBlockY() == -10) {
-					PbPlugin.getCurrentMap().getSpawn(TeamType.OBSERVATOR);
+					PbPlugin.getCurrentMap().getSpawn(TeamType.OBSERVER);
 					return;
 				}
 			}

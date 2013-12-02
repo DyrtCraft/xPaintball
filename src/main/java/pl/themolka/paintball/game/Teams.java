@@ -59,8 +59,8 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 		if(PbPlugin.getTeams().isTeam(player, TeamType.BLUE)) {
 			return TeamType.BLUE;
 		}
-		if(PbPlugin.getTeams().isTeam(player, TeamType.OBSERVATOR)) {
-			return TeamType.OBSERVATOR;
+		if(PbPlugin.getTeams().isTeam(player, TeamType.OBSERVER)) {
+			return TeamType.OBSERVER;
 		}
 		if(PbPlugin.getTeams().isTeam(player, TeamType.RED)) {
 			return TeamType.RED;
@@ -74,8 +74,8 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 		if(teamType == TeamType.BLUE) {
 			return ChatColor.BLUE + "Blue team" + ChatColor.RESET;
 		}
-		if(teamType == TeamType.OBSERVATOR) {
-			return ChatColor.AQUA + "Observators team" + ChatColor.RESET;
+		if(teamType == TeamType.OBSERVER) {
+			return ChatColor.AQUA + "Observers team" + ChatColor.RESET;
 		}
 		if(teamType == TeamType.RED) {
 			return ChatColor.RED + "Red team" + ChatColor.RESET;
@@ -94,6 +94,19 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 		return this.running;
 	}
 	
+	private boolean isTeamsFull() {
+		Map map = PbPlugin.getCurrentMap();
+		
+		if(map.getMaxPlayers() < 0) {
+			return false;
+		}
+		if(Teams.getBluePlayers.size() >= map.getMaxPlayers() || Teams.getRedPlayers.size() >= map.getMaxPlayers()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	@Override
 	public boolean isTeam(Player player, TeamType teamType) {
 		if(teamType == TeamType.BLUE && getBluePlayers.contains(player.getName())) {
@@ -102,7 +115,7 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 		if(teamType == TeamType.RED && getRedPlayers.contains(player.getName())) {
 			return true;
 		}
-		if(teamType == TeamType.OBSERVATOR) {
+		if(teamType == TeamType.OBSERVER) {
 			if(getBluePlayers.contains(player.getName()) || getRedPlayers.contains(player.getName())) {
 				return false;
 			} else {
@@ -125,10 +138,8 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 	
 	@Override
 	public void setTeam(Player player, TeamType teamType) {
-		Map map = PbPlugin.getMap(player.getLocation().getWorld().getName());
-		
-		if(Teams.getBluePlayers.size() >= map.getMaxPlayers() || Teams.getRedPlayers.size() >= map.getMaxPlayers()) {
-			if(!(player.hasPermission("pgm.vip.joinfull") || teamType == TeamType.OBSERVATOR)) {
+		 if(isTeamsFull() == true){
+			if(!(player.hasPermission("pgm.vip.joinfull") || teamType == TeamType.OBSERVER)) {
 				player.sendMessage(ChatColor.GOLD + "This match is full! Purcharse VIP to join full matches!");
 				return;
 			}
@@ -138,7 +149,7 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 				player.sendMessage(ChatColor.RED + "You can not join to the team at this time, " + ChatColor.GOLD + "please wait!");
 				return;
 			}
-			if(!(teamType == TeamType.OBSERVATOR) && Teams.getBluePlayers.contains(player.getName()) || Teams.getRedPlayers.contains(player.getName())) {
+			if(!(teamType == TeamType.OBSERVER) && Teams.getBluePlayers.contains(player.getName()) || Teams.getRedPlayers.contains(player.getName())) {
 				player.sendMessage(ChatColor.RED + "You are already joined to the team!");
 				return;
 			}
@@ -182,12 +193,12 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 				return;
 			}
 		}
-		if(teamType == TeamType.OBSERVATOR) {
-			if(PbPlugin.getTeams().isTeam(player, TeamType.OBSERVATOR)) {
-				player.sendMessage(ChatColor.RED + "You are already in the " + getTeamName(TeamType.OBSERVATOR) + ChatColor.RED + "!");
+		if(teamType == TeamType.OBSERVER) {
+			if(PbPlugin.getTeams().isTeam(player, TeamType.OBSERVER)) {
+				player.sendMessage(ChatColor.RED + "You are already in the " + getTeamName(TeamType.OBSERVER) + ChatColor.RED + "!");
 				return;
 			}
-			PlayerJoinTeamEvent event = new PlayerJoinTeamEvent(player, TeamType.OBSERVATOR);
+			PlayerJoinTeamEvent event = new PlayerJoinTeamEvent(player, TeamType.OBSERVER);
 			Bukkit.getPluginManager().callEvent(event);
 			
 			Teams.getBluePlayers.remove(player.getName());
@@ -221,7 +232,7 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 			TagAPI.refreshPlayer(player);
 			player.setPlayerListName(ChatColor.AQUA + player.getName() + ChatColor.RESET);
 			
-			player.sendMessage(ChatColor.DARK_PURPLE + "You have joined to the " + getTeamName(TeamType.OBSERVATOR) + ChatColor.DARK_PURPLE + ".");
+			player.sendMessage(ChatColor.DARK_PURPLE + "You have joined to the " + getTeamName(TeamType.OBSERVER) + ChatColor.DARK_PURPLE + ".");
 			return;
 		}
 		if(!player.hasPermission("pgm.vip.join")) {
@@ -234,7 +245,7 @@ public class Teams implements pl.themolka.paintball.api.Teams {
 		}
 		if(PbPlugin.getTeams().isTeam(player, TeamType.BLUE) || PbPlugin.getTeams().isTeam(player, TeamType.RED)) {
 			player.sendMessage(ChatColor.RED + "You are already joined to the team!");
-			check(player, TeamType.OBSERVATOR);
+			check(player, TeamType.OBSERVER);
 			return;
 		}
 		if(teamType == TeamType.BLUE) {

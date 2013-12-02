@@ -34,8 +34,8 @@ public class MyteamCommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.DARK_PURPLE + "You are currently in the " + ChatColor.RED + PbPlugin.getTeams().getTeamName(TeamType.RED) + ChatColor.DARK_PURPLE + ".");
 				return true;
 			}
-			if(Teams.getInstance().isTeam((Player) sender, TeamType.OBSERVATOR)) {
-				sender.sendMessage(ChatColor.DARK_PURPLE + "You are currently in the " + ChatColor.AQUA + PbPlugin.getTeams().getTeamName(TeamType.OBSERVATOR) + ChatColor.DARK_PURPLE + ".");
+			if(Teams.getInstance().isTeam((Player) sender, TeamType.OBSERVER)) {
+				sender.sendMessage(ChatColor.DARK_PURPLE + "You are currently in the " + ChatColor.AQUA + PbPlugin.getTeams().getTeamName(TeamType.OBSERVER) + ChatColor.DARK_PURPLE + ".");
 				return true;
 			}
 		}

@@ -1,8 +1,8 @@
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#               xPaintball  configuration  file  (Paintball by TheMolkaPL)              #
-#   ========================== Follow the instructions at: ==========================   #
-# https://github.com/TheMolkaPL/Paintball/blob/Dev-builds/src/main/resources/config.yml #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                     xPaintball  configuration  file  by  TheMolkaPL                     #
+#   ============================ Follow the instructions at ============================  #
+# https://github.com/TheMolkaPL/xPaintball/blob/Dev-builds/src/main/resources/config.yml  #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # Setting Paintball for a BungeeCord proxy by md-5
 # For more informations about that proxy see http://www.spigotmc.org/wiki/about-bungeecord/ 
@@ -14,7 +14,8 @@ bungee-cord:
 # Set a match time in minutes
 match-time: 5
 # List of maps some will be enable (all '_' will be replace to space)
-map-list: [Default_Map]
+map-list:
+    - Default_Map
 # All maps
 maps:
     # Map 'Default_Map'
@@ -24,7 +25,7 @@ maps:
         # Map version
         version: 1.0
         # Map description
-        description: 'The default look of Paintball plugin'
+        description: 'The default look of xPaintball plugin'
         # Max players per team. Type '-1', if you will create non-slots matches
         max-players: 25
         # Blue team settings
@@ -45,8 +46,8 @@ maps:
                 x: -30
                 y: 10
                 z: 0
-        # Observator settings
-        observator:
+        # Observers team settings
+        observers:
             # Set a spawn-point location of this team
             spawn-point:
                 x: 0

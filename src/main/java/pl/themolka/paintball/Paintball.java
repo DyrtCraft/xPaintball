@@ -16,7 +16,9 @@ import pl.themolka.paintball.commands.VoteCommand;
 import pl.themolka.paintball.game.Map;
 import pl.themolka.paintball.inventories.TeamChooserInventory;
 import pl.themolka.paintball.inventories.VoteInventory;
+import pl.themolka.paintball.listeners.Damage;
 import pl.themolka.paintball.listeners.Gamer;
+import pl.themolka.paintball.listeners.ItemUsage;
 import pl.themolka.paintball.listeners.Observator;
 import pl.themolka.paintball.listeners.Player;
 import pl.themolka.paintball.listeners.PlayerMove;
@@ -85,7 +87,9 @@ public class Paintball extends JavaPlugin {
 	
 	public void registerListeners() {
 		getLogger().info("Loading listners...");
+		getServer().getPluginManager().registerEvents(new Damage(this), this);
 		getServer().getPluginManager().registerEvents(new Gamer(this), this);
+		getServer().getPluginManager().registerEvents(new ItemUsage(this), this);
 		getServer().getPluginManager().registerEvents(new Observator(this), this);
 		getServer().getPluginManager().registerEvents(new Player(this), this);
 		getServer().getPluginManager().registerEvents(new PlayerMove(this), this);

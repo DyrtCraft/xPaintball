@@ -38,7 +38,7 @@ public class Player implements Listener {
 		
 		e.setJoinMessage(null);
 		
-		teams.setTeam(e.getPlayer(), TeamType.OBSERVATOR);
+		teams.setTeam(e.getPlayer(), TeamType.OBSERVER);
 		e.getPlayer().setPlayerListName(ChatColor.AQUA + e.getPlayer().getName() + ChatColor.RESET);
 		
 		/*for(org.bukkit.entity.Player player : Bukkit.getOnlinePlayers()) {
@@ -48,7 +48,7 @@ public class Player implements Listener {
 		}*/
 		
 		try {
-			e.getPlayer().teleport(map.getSpawn(TeamType.OBSERVATOR));
+			e.getPlayer().teleport(map.getSpawn(TeamType.OBSERVER));
 		} catch(Exception ex) {
 			e.getPlayer().sendMessage(ChatColor.RED + "This spawn point (OBSERVATOR) is not set yet!");
 		}

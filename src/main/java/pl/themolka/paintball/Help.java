@@ -8,10 +8,10 @@ public class Help implements pl.themolka.paintball.api.Help {
 	@Override
 	public boolean getHelp(CommandSender sender, String command) {
 		if(command == null) {
-			sender.sendMessage(ChatColor.GOLD + " ===== Paintballs's Help Center ===== ");
-			sender.sendMessage(ChatColor.GRAY + "Welcome to Paintballs's help center. Here you can get a help for specifited command!");
+			sender.sendMessage(ChatColor.GOLD + " ===== xPaintballs's Help Center ===== ");
+			sender.sendMessage(ChatColor.GRAY + "Welcome to xPaintballs's help center. Here you can get a help for specifited command!");
 			sender.sendMessage(ChatColor.GOLD + "Let's started by using /pb help <command>!");
-			sender.sendMessage(ChatColor.GOLD + "Get all Paintball's commands by typing /pb commands");
+			sender.sendMessage(ChatColor.GOLD + "Get all xPaintball's commands by typing /pb commands");
 			return true;
 		}
 		
@@ -20,11 +20,11 @@ public class Help implements pl.themolka.paintball.api.Help {
 			return true;
 		}
 		if(command.equalsIgnoreCase("commands") || command.equalsIgnoreCase("cmds")) {
-			sendHelp(sender, "/pb commands", "cmds", "Get all Paintball's commands", "/pb commands", null, true);
+			sendHelp(sender, "/pb commands", "cmds", "Get all xPaintball's commands", "/pb commands", null, true);
 			return true;
 		}
 		if(command.equalsIgnoreCase("help") || command.equalsIgnoreCase("?")) {
-			sendHelp(sender, "/pb help", "?", "Show Paintball's Help Center", "/pb help\n/pgm help <command>", null, true);
+			sendHelp(sender, "/pb help", "?", "Show xPaintball's Help Center", "/pb help\n/pgm help <command>", null, true);
 			return true;
 		}
 		if(command.equalsIgnoreCase("info")) {
@@ -74,7 +74,7 @@ public class Help implements pl.themolka.paintball.api.Help {
 	
 	@Override
 	public void sendHelp(CommandSender sender, String command, String alias, String description, String usage, String permission, boolean canConsole) {
-		sender.sendMessage(ChatColor.GOLD + " ===== Paintball's help center ===== ");
+		sender.sendMessage(ChatColor.GOLD + " ===== xPaintball's help center ===== ");
 		sender.sendMessage(ChatColor.GOLD + "Help for: " + ChatColor.GRAY + command);
 		sender.sendMessage(ChatColor.GOLD + "Description: " + ChatColor.GRAY + description);
 		if(!(alias == null)) {

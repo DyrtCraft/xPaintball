@@ -13,7 +13,7 @@ public final class PbPlugin {
 	
 	private static Paintball plugin = new Paintball();
 	private static BungeeConnector bungeeConnector = new BungeeConnector(plugin);
-	private static Map currnetMap;
+	private static Map currnetMap = null;
 	private static Help help = new pl.themolka.paintball.Help();
 	private static Items items = new pl.themolka.paintball.Items();
 	private static Map map = new pl.themolka.paintball.game.Map(plugin, mapName);
@@ -36,7 +36,7 @@ public final class PbPlugin {
 	 * @return Map
 	 */
 	public static Map getCurrentMap() {
-		return PbPlugin.currnetMap;
+		return currnetMap;
 	}
 	
 	/**
